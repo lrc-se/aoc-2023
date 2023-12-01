@@ -1,7 +1,7 @@
 Advent of Code 2023
 ===================
 
-Solutions for the 2023 edition of the Cygnified Advent of Code.
+Solutions for the 2023 edition of the [Cygnified Advent of Code](https://aoc.cygni.se/).
 
 This time I'll concentrate on bleeding-edge C#.NET, trying to squeeze out as much performance and DX as possible from the language and framework.
 
@@ -50,4 +50,6 @@ This is basically a port of my [original Nim solution](https://github.com/lrc-se
 Puzzles
 -------
 
-TBA
+### Day 1
+
+Well, this was a considerably more tricky start than usual, and I stumbled on regex overlap handling. Also note that I have no mechanism for variable test input, so the current setup will give the wrong answer for part 2's test data.
