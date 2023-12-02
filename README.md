@@ -53,3 +53,7 @@ Puzzles
 ### Day 1
 
 Well, this was a considerably more tricky start than usual, and I stumbled on regex overlap handling. Also note that I have no mechanism for variable test input, so the current setup will give the wrong answer for part 2's test data.
+
+### Day 2
+
+Today was just about parsing, which was handled without regexes this time.
