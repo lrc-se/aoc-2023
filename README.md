@@ -57,3 +57,7 @@ Well, this was a considerably more tricky start than usual, and I stumbled on re
 ### Day 2
 
 Today was just about parsing, which was handled without regexes this time.
+
+### Day 3
+
+Regex, generics and immutable data structures, with a mix between functional and imperative.
