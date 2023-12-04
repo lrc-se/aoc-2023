@@ -1,6 +1,6 @@
 internal class Puzzle(string rawInput) : AocPuzzle<int[], int>(rawInput)
 {
-    protected override int[] ParseInput(string rawInput) => rawInput.Split("\n").Select(int.Parse).ToArray();
+    protected override int[] ParseInput(string rawInput) => rawInput.Split('\n').Select(int.Parse).ToArray();
 
     protected override int RunPartOne() => _input.Sum();
 

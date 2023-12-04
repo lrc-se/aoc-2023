@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if [[ $2 == "rel" ]] || [[ $2 == "test-rel" ]]; then
   echo "### RELEASE BUILD ###"
   build=Release
