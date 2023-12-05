@@ -20,14 +20,27 @@ internal class Puzzle(string rawInput) : AocPuzzle<Almanac, long>(rawInput)
         return value;
     }
 
-    private static long ReverseMappedValue(long value, Map[] maps)
+    private static Range[] MapRanges(Range source, Map[] maps)
     {
-        foreach (var map in maps)
+        List<Range> ranges = [];
+        long curStart = source.Start;
+
+        var sortedMaps = maps.Where(map => map.Source.Start <= source.End && map.Source.End >= source.Start).OrderBy(map => map.Source.Start);
+        foreach (var map in sortedMaps)
         {
-            if (map.Dest.Contains(value))
-                return map.Source.Start + value - map.Dest.Start;
+            if (curStart < map.Source.Start)
+                ranges.Add(new(curStart, map.Source.Start - 1));
+
+            long start = Math.Max(map.Source.Start, source.Start);
+            long end = Math.Min(map.Source.End, source.End);
+            ranges.Add(new(map.Dest.Start + start - map.Source.Start, map.Dest.Start + end - map.Source.Start));
+            curStart = end + 1;
         }
-        return value;
+
+        if (curStart < source.End)
+            ranges.Add(new(curStart, source.End));
+
+        return ranges.ToArray();
     }
 
     private long GetLocation(long seed)
@@ -39,17 +52,6 @@ internal class Puzzle(string rawInput) : AocPuzzle<Almanac, long>(rawInput)
         long temperature = MapValue(light, _input.LightMaps);
         long humidity = MapValue(temperature, _input.TemperatureMaps);
         return MapValue(humidity, _input.HumidityMaps);
-    }
-
-    private long GetSeed(long location)
-    {
-        long humidity = ReverseMappedValue(location, _input.HumidityMaps);
-        long temperature = ReverseMappedValue(humidity, _input.TemperatureMaps);
-        long light = ReverseMappedValue(temperature, _input.LightMaps);
-        long water = ReverseMappedValue(light, _input.WaterMaps);
-        long fertilizer = ReverseMappedValue(water, _input.FertilizerMaps);
-        long soil = ReverseMappedValue(fertilizer, _input.SoilMaps);
-        return ReverseMappedValue(soil, _input.SeedMaps);
     }
 
 
@@ -75,11 +77,13 @@ internal class Puzzle(string rawInput) : AocPuzzle<Almanac, long>(rawInput)
         for (int i = 0; i < _input.Seeds.Length; i += 2)
             seedRanges.Add(new(_input.Seeds[i], _input.Seeds[i] + _input.Seeds[i + 1]));
 
-        for (long location = 0; ; ++location)
-        {
-            long seed = GetSeed(location);
-            if (seedRanges.Any(range => range.Contains(seed)))
-                return location;
-        }
+        var soilRanges = seedRanges.SelectMany(range => MapRanges(range, _input.SeedMaps));
+        var fertilizerRanges = soilRanges.SelectMany(range => MapRanges(range, _input.SoilMaps));
+        var waterRanges = fertilizerRanges.SelectMany(range => MapRanges(range, _input.FertilizerMaps));
+        var lightRanges = waterRanges.SelectMany(range => MapRanges(range, _input.WaterMaps));
+        var temperatureRanges = lightRanges.SelectMany(range => MapRanges(range, _input.LightMaps));
+        var humidityRanges = temperatureRanges.SelectMany(range => MapRanges(range, _input.TemperatureMaps));
+        var locationRanges = humidityRanges.SelectMany(range => MapRanges(range, _input.HumidityMaps));
+        return locationRanges.Min(range => range.Start);
     }
 }
