@@ -73,3 +73,4 @@ Oh boy, exponential iteration explosion in part 2 already... I had several false
 ### Day 6
 
 Just a straight-up loop this time, nothing fancy; 'twas fast enough throughout. Very varying difficulty levels early on this year!
+*__Update:__ Adopted a mathematical perspective, which reduced execution times considerably for part 2.*
