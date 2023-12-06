@@ -69,3 +69,7 @@ Regexes, bit shifts and LINQ made short work of this.
 ### Day 5
 
 Oh boy, exponential iteration explosion in part 2 already... I had several false starts (and true stops) trying to calculate reverse ranges, but then went for a brute force solution which simply tried to hit the seed ranges starting from increasing location values. That worked but took a couple of seconds to run, so I then made another attempt using ranges, only in the forward direction instead, which turned out to work just fine and was also almost instantaneous. But oh, how I miss a pipeline operator in C#...
+
+### Day 6
+
+Just a straight-up loop this time, nothing fancy; 'twas fast enough throughout. Very varying difficulty levels early on this year!
