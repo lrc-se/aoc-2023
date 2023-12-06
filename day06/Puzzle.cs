@@ -1,19 +1,21 @@
 using System.Text.RegularExpressions;
 using Race = (long Time, long Distance);
 
-internal class Puzzle(string rawInput) : AocPuzzle<Race[], int>(rawInput)
+internal class Puzzle(string rawInput) : AocPuzzle<Race[], long>(rawInput)
 {
     private static readonly Regex _re = new(@"\s+", RegexOptions.Compiled);
 
-    private static int GetWinCount(Race race)
+    private static long GetWinCount(Race race)
     {
-        int count = 0;
-        for (int time = 1; time < race.Time; ++time)
-        {
-            if ((race.Time - time) * time > race.Distance)
-                ++count;
-        }
-        return count;
+        long low = 1;
+        while ((race.Time - low) * low <= race.Distance)
+            ++low;
+
+        long high = race.Time - 1;
+        while ((race.Time - high) * high <= race.Distance)
+            --high;
+
+        return high - low + 1;
     }
 
 
@@ -25,9 +27,9 @@ internal class Puzzle(string rawInput) : AocPuzzle<Race[], int>(rawInput)
         return times.Zip(distances).ToArray();
     }
 
-    protected override int RunPartOne() => _input.Select(GetWinCount).Aggregate((prev, cur) => prev * cur);
+    protected override long RunPartOne() => _input.Select(GetWinCount).Aggregate((prev, cur) => prev * cur);
 
-    protected override int RunPartTwo()
+    protected override long RunPartTwo()
     {
         long time = long.Parse(string.Join("", _input.Select(race => race.Time)));
         long distance = long.Parse(string.Join("", _input.Select(race => race.Distance)));
