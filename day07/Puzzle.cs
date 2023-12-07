@@ -1,23 +1,27 @@
-internal class Puzzle(string rawInput) : AocPuzzle<Hand[], int>(rawInput)
+internal class Puzzle(string rawInput) : AocPuzzle<string[], int>(rawInput)
 {
-    private static Hand CreateHand(string definition)
+    private static Hand CreateHand(string definition, bool useJokers)
     {
         var parts = definition.Split(' ');
-        return new(parts[0].ToCharArray().Select(label => new Card(label)).ToArray(), int.Parse(parts[1]));
+        return new(parts[0].ToCharArray().Select(label => new Card(label, useJokers)).ToArray(), int.Parse(parts[1]), useJokers);
     }
 
-
-    protected override Hand[] ParseInput(string rawInput) => rawInput.Split('\n').Select(CreateHand).ToArray();
-
-    protected override int RunPartOne()
+    private int GetWinnings(bool useJokers)
     {
-        Array.Sort(_input);
+        var hands = _input.Select(line => CreateHand(line, useJokers)).ToArray();
+        Array.Sort(hands);
+
         int winnings = 0;
-        for (int i = 0; i < _input.Length; ++i)
-            winnings += _input[i].Bid * (i + 1);
+        for (int i = 0; i < hands.Length; ++i)
+            winnings += hands[i].Bid * (i + 1);
 
         return winnings;
     }
 
-    protected override int RunPartTwo() => 0;
+
+    protected override string[] ParseInput(string rawInput) => rawInput.Split('\n');
+
+    protected override int RunPartOne() => GetWinnings(false);
+
+    protected override int RunPartTwo() => GetWinnings(true);
 }
