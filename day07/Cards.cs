@@ -36,8 +36,6 @@ internal readonly struct Hand(Card[] cards, int bid, bool useJokers) : IComparab
         return 0;
     }
 
-    private static readonly char[] _jokerLabels = ['A', 'K', 'Q', 'T', '9', '8', '7', '6', '5', '4', '3', '2'];
-
     private static HandType ComputeType(ReadOnlySpan<char> sortedLabels)
     {
         List<int> runCounts = [];
@@ -73,7 +71,8 @@ internal readonly struct Hand(Card[] cards, int bid, bool useJokers) : IComparab
     {
         var bestType = HandType.HighCard;
         var cache = new Dictionary<string, HandType>();
-        var cardLabels = cards.Select(card => card.Label == 'J' ? _jokerLabels : [card.Label]).ToArray();
+        var jokerLabels = cards.Select(card => card.Label == 'J' ? 'A' : card.Label).Distinct().ToArray();
+        var cardLabels = cards.Select(card => card.Label == 'J' ? jokerLabels : [card.Label]).ToArray();
         for (int i0 = 0; i0 < cardLabels[0].Length; ++i0)
         {
             for (int i1 = 0; i1 < cardLabels[1].Length; ++i1)
