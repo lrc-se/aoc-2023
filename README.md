@@ -74,3 +74,7 @@ Oh boy, exponential iteration explosion in part 2 already... I had several false
 
 Just a straight-up loop this time, nothing fancy; 'twas fast enough throughout. Very varying difficulty levels early on this year!
 *__Update:__ Adopted a mathematical perspective, which reduced execution times considerably for part 2.*
+
+### Day 7
+
+Solved part 2 with an explicit brute-force combination search, which I then made more efficient with a cache. There are probably better ways, but this is quite fast already.
