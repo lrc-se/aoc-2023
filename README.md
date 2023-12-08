@@ -78,3 +78,7 @@ Just a straight-up loop this time, nothing fancy; 'twas fast enough throughout. 
 ### Day 7
 
 Solved part 2 with an explicit brute-force combination search, which I then made more efficient with a cache. There are probably better ways, but this is quite fast already.
+
+### Day 8
+
+This year's (first?) period piece, as it were. LCM to the rescue, as usual. (Note that the included test input only applies to part 1.)
