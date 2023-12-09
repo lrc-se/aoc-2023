@@ -82,3 +82,7 @@ Solved part 2 with an explicit brute-force combination search, which I then made
 ### Day 8
 
 This year's (first?) period piece, as it were. LCM to the rescue, as usual. (Note that the included test input only applies to part 1.)
+
+### Day 9
+
+Just straight-up loops today too, with a sentinel for performance, and it's blazing fast even without trickery.
