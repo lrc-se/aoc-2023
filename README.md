@@ -22,15 +22,16 @@ Any other value will abort the execution.
 
 The base example also include a shell script *run.sh*, which will time the execution of the solution. It has the following syntax:
 
-`run.sh part [mode]`
+`run.sh part [mode] [testsuffix]`
 
 - `part`: which part to run (sets the `part` environment variable accordingly)
 - `mode`:
   - `test`: activates test mode
   - `rel`: builds the solution in release mode
   - `test-rel`: combines `test` and `rel`
+- `testsuffix`: suffix to add to test input filename when in test mode
 
-If the `mode` argument is omitted, the puzzle will be run in normal mode without release optimizations. Input is read from *input.txt* in normal mode, and from *input-test.txt* in test mode.
+If the `mode` argument is omitted, the puzzle will be run in normal mode without release optimizations. Input is read from *input.txt* in normal mode, and from *input-testX.txt* in test mode where *X* is set to the value of `testsuffix`.
 
 
 Exercises
@@ -86,3 +87,7 @@ This year's (first?) period piece, as it were. LCM to the rescue, as usual. (Not
 ### Day 9
 
 Just straight-up loops today too, with a sentinel for performance, and it's blazing fast even without trickery.
+
+### Day 10
+
+Mmm, pattern matching. For part 2 I transformed the grid to a version which always includes spaces around the pipes, performed a simple flood fill (as per [day 18 from last year](https://github.com/lrc-se/aoc-2022/blob/main/day18/puzzle.nim)) from the outside, and then counted the non-loop tiles from the original grid whose counterparts remained untouched in the expanded grid.
