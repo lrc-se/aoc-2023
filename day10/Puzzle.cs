@@ -12,7 +12,7 @@ internal class Puzzle(string rawInput) : AocPuzzle<char[][], int>(rawInput)
         [Direction.West] = (-1, 0)
     };
 
-    private (Coord Position, Direction Direction) GetStart()
+    private (Coord Position, Direction Direction, char Tile) GetStart()
     {
         int x;
         int y = -1;
@@ -22,15 +22,19 @@ internal class Puzzle(string rawInput) : AocPuzzle<char[][], int>(rawInput)
         } while (x == -1);
 
         Coord start = (x, y);
-        var direction = start switch
-        {
-            var pos when pos.Y > 0 && _input[start.Y - 1][start.X] is '|' or '7' or 'F' => Direction.North,
-            var pos when pos.X < _input[0].Length - 1 && _input[start.Y][start.X + 1] is '-' or 'J' or '7' => Direction.East,
-            var pos when pos.Y < _input.Length - 1 && _input[start.Y + 1][start.X] is '|' or 'L' or 'J' => Direction.South,
-            _ => Direction.West
-        };
+        bool hasNorth = y > 0 && _input[y - 1][x] is '|' or '7' or 'F';
+        bool hasEast = x < _input[0].Length - 1 && _input[y][x + 1] is '-' or 'J' or '7';
+        bool hasSouth = y < _input.Length - 1 && _input[y + 1][x] is '|' or 'L' or 'J';
 
-        return (start, direction);
+        return (hasNorth, hasEast, hasSouth) switch
+        {
+            (true, true, false) => (start, Direction.North, 'L'),
+            (true, false, true) => (start, Direction.North, '|'),
+            (true, false, false) => (start, Direction.North, 'J'),
+            (false, true, true) => (start, Direction.East, 'F'),
+            (false, true, false) => (start, Direction.East, '-'),
+            _ => (start, Direction.South, '7')
+        };
     }
 
     private Direction GetNextDirection(Coord pos, Direction dir) => _input[pos.Y][pos.X] switch
@@ -49,7 +53,7 @@ internal class Puzzle(string rawInput) : AocPuzzle<char[][], int>(rawInput)
 
     protected override int RunPartOne()
     {
-        var (start, curDir) = GetStart();
+        var (start, curDir, _) = GetStart();
 
         int steps = 0;
         var curPos = start;
@@ -66,17 +70,18 @@ internal class Puzzle(string rawInput) : AocPuzzle<char[][], int>(rawInput)
 
     protected override int RunPartTwo()
     {
-        var (start, curDir) = GetStart();
+        var (startPos, curDir, startTile) = GetStart();
+        _input[startPos.Y][startPos.X] = startTile;
 
         HashSet<Coord> loopTiles = [];
-        var curPos = start;
+        var curPos = startPos;
         do
         {
             loopTiles.Add(curPos);
             curDir = GetNextDirection(curPos, curDir);
             var (deltaX, deltaY) = _deltas[curDir];
             curPos = (curPos.X + deltaX, curPos.Y + deltaY);
-        } while (curPos != start);
+        } while (curPos != startPos);
 
         List<Coord> groundTiles = [];
         int expandedWidth = _input[0].Length * 2 + 1;
