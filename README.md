@@ -91,3 +91,7 @@ Just straight-up loops today too, with a sentinel for performance, and it's blaz
 ### Day 10
 
 Mmm, pattern matching. For part 2 I transformed the grid to a version which always includes spaces around the pipes, performed a simple flood fill (as per [day 18 from last year](https://github.com/lrc-se/aoc-2022/blob/main/day18/puzzle.nim)) from the outside, and then counted the non-loop tiles from the original grid whose counterparts remained untouched in the expanded grid.
+
+### Day 11
+
+I had an *inkling* that expanding the grid in-place would not be a good idea for part 2, so I just kept track of expanded rows and columns and summed everything afterwards. And lo and behold...
