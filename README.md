@@ -54,6 +54,7 @@ Puzzles
 ### Day 1
 
 Well, this was a considerably more tricky start than usual, and I stumbled on regex overlap handling. Also note that I have no mechanism for variable test input, so the current setup will give the wrong answer for part 2's test data.
+*__Update:__ I now have such a mechanism.*
 
 ### Day 2
 
@@ -78,11 +79,11 @@ Just a straight-up loop this time, nothing fancy; 'twas fast enough throughout. 
 
 ### Day 7
 
-Solved part 2 with an explicit brute-force combination search, which I then made more efficient with a cache. There are probably better ways, but this is quite fast already.
+Solved part 2 with an explicit brute-force combination search, which I then made more efficient with a cache (which I in turn removed after I came up with a better optimization). There are probably better ways, but this is quite fast already.
 
 ### Day 8
 
-This year's (first?) period piece, as it were. LCM to the rescue, as usual. (Note that the included test input only applies to part 1.)
+This year's (first?) period piece, as it were. LCM to the rescue, as usual.
 
 ### Day 9
 
