@@ -96,3 +96,11 @@ Mmm, pattern matching. For part 2 I transformed the grid to a version which alwa
 ### Day 11
 
 I had an *inkling* that expanding the grid in-place would not be a good idea for part 2, so I just kept track of expanded rows and columns and summed everything afterwards. And lo and behold...
+
+### Day 12
+
+*(In progress...)*
+
+### Day 13
+
+Mmm, loops.
