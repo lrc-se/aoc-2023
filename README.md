@@ -104,3 +104,7 @@ I had an *inkling* that expanding the grid in-place would not be a good idea for
 ### Day 13
 
 Mmm, loops.
+
+### Day 14
+
+Ended up with quite a bit of repetition, but it's also rather fast. Used a simple checksum approach to find the period in part 2.
