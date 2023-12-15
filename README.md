@@ -108,3 +108,7 @@ Mmm, loops.
 ### Day 14
 
 Ended up with quite a bit of repetition, but it's also rather fast. Used a simple checksum approach to find the period in part 2.
+
+### Day 15
+
+Thought about doing a thing with linked lists in part 2, but it turns out that regular lists were very fast as it was, so I left it at that.
