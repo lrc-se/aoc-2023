@@ -112,3 +112,15 @@ Ended up with quite a bit of repetition, but it's also rather fast. Used a simpl
 ### Day 15
 
 Thought about doing a thing with linked lists in part 2, but it turns out that regular lists were very fast as it was, so I left it at that.
+
+### Day 16
+
+TBA
+
+### Day 17
+
+*(In progress...)*
+
+### Day 18
+
+Used the simple version of the shoelace formula to get the area, with an addendum to include the leading edges.
