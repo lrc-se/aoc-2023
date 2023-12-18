@@ -115,7 +115,7 @@ Thought about doing a thing with linked lists in part 2, but it turns out that r
 
 ### Day 16
 
-TBA
+Today was mostly about detecting and escaping the infinite loop.
 
 ### Day 17
 
