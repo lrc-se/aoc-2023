@@ -124,3 +124,31 @@ Today was mostly about detecting and escaping the infinite loop.
 ### Day 18
 
 Used the simple version of the shoelace formula to get the area, with an addendum to include the leading edges.
+
+### Day 19
+
+*(In progress...)*
+
+### Day 20
+
+Taking the OOP route with events. Note that the solution to part 2 relies on a specific circumstance in the input structure, which I assume to be general as I can't think of a way to arrive at the answer without it.
+
+### Day 21
+
+*(In progress...)*
+
+### Day 22
+
+TBA
+
+### Day 23
+
+TBA
+
+### Day 24
+
+*(In progress...)*
+
+### Day 25
+
+TBA
