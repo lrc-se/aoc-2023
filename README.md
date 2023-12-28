@@ -143,7 +143,7 @@ TBA
 
 ### Day 23
 
-TBA
+Using inner-function recursion for both parts, precomputing junction distances in part 2 to save iterations. It's still not particularly fast, but it does give the correct answer.
 
 ### Day 24
 
