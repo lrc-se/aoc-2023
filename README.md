@@ -139,7 +139,7 @@ Taking the OOP route with events. Note that the solution to part 2 relies on a s
 
 ### Day 22
 
-TBA
+Using a two-way index to keep track of what supports what.
 
 ### Day 23
 
