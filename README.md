@@ -99,7 +99,7 @@ I had an *inkling* that expanding the grid in-place would not be a good idea for
 
 ### Day 12
 
-*(In progress...)*
+*Part 1 solved, not posted*
 
 ### Day 13
 
@@ -119,7 +119,7 @@ Today was mostly about detecting and escaping the infinite loop.
 
 ### Day 17
 
-*(In progress...)*
+*Solved, not posted due to poor performance*
 
 ### Day 18
 
@@ -127,7 +127,7 @@ Used the simple version of the shoelace formula to get the area, with an addendu
 
 ### Day 19
 
-*(In progress...)*
+*Part 1 solved, not posted*
 
 ### Day 20
 
@@ -135,7 +135,7 @@ Taking the OOP route with events. Note that the solution to part 2 relies on a s
 
 ### Day 21
 
-*(In progress...)*
+*Part 1 solved, not posted*
 
 ### Day 22
 
@@ -147,8 +147,20 @@ Using inner-function recursion for both parts, precomputing junction distances i
 
 ### Day 24
 
-*(In progress...)*
+*Part 1 solved, not posted*
 
 ### Day 25
 
-TBA
+*Solved, not posted due to very poor performance*
+
+
+Conclusion
+----------
+
+Well, that was really something. With a gotcha already on the first day I was a bit worried how it all would play out, and now that it's over I hold that it was indeed tougher than usual, in several ways.
+As a result I was not able to solve all parts of all puzzles within a reasonable amount of time, so rather than descending into a bog of ceaseless hammering to get it done – or, to be perfectly honest: in an effort to *climb back out* after having already done so – I've decided to call it quits (at least for now).
+
+Apart from that, however, I've really liked C# 12/.NET 8 and the improvements in both the language, syntax and framework functions, not to mention how *fast* it is.
+The native AOT compilation consistently put my execution times on par with lower-level languages such as Rust or C++, except in a corner case where it was actually markedly *slower* than the JIT version, where I suppose either trimming issues or limitations in AOT optimization reach was the main culprit. Still, it's very clear that the AOT process completely removes the CLR startup penalty, which is one of the main selling points behind it anyway.
+
+So, yeah, I guess that's that. See you next year?
